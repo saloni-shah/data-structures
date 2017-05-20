@@ -17,36 +17,55 @@ var BSTMethods = {};
 
 BSTMethods.insert = function(value) {
   var newNode = BinarySearchTree(value);
-  
   if (newNode.value < this.value) {
     if (this.left === null) {
       this.left = newNode;
     } else {
-      this.insert(value);
-    }  
+      this.left.insert(value);
+    }
+
   } else if (newNode.value > this.value) {
     if (this.right === null) {
       this.right = newNode;
-    } else {
-      this.insert(value);
+    } else {  
+      this.right.insert(value);
     }  
   }
 };
 
 BSTMethods.contains = function(value) {
-  var currentNode = this.root;
-  var found = false;
-  while (!found && currentNode) {
-    if (value < currentNode.value) {
-      currentNode.left = node;
-    } else if (value > currentNode.value) {
-      
+  if (this.value === value) {
+    return true;
+  } else {
+    if (value < this.value) {
+      if (!this.left) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else {
+      if (!this.right) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
     }
   }
-  
+  return false;
 };
 
-BSTMethods.depthFirstLong = function(callback) {
+BSTMethods.depthFirstLog = function(callback) {
+  if (this.value) {
+    callback(this.value);  
+  } else {
+    if (this.left) {
+      return this.left.depthFirstLog(callback);
+    }
+    if (this.right) {
+      return this.right.depthFirstLog(callback);
+    }
+  }
+
   
 };
 

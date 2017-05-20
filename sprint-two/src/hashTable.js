@@ -29,7 +29,6 @@ HashTable.prototype.retrieve = function(k) {
   var tupleObj = this._storage.get(index);
   var returnValue = undefined;
   tupleObj.each((value, index, arr) => {
-    console.log(value.get(0));
     if (value.get(0) === k) {
       returnValue = value.get(1);
     }
