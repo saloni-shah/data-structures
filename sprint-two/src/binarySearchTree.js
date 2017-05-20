@@ -56,16 +56,14 @@ BSTMethods.contains = function(value) {
 
 BSTMethods.depthFirstLog = function(callback) {
   if (this.value) {
-    callback(this.value);  
-  } else {
-    if (this.left) {
-      return this.left.depthFirstLog(callback);
-    }
-    if (this.right) {
-      return this.right.depthFirstLog(callback);
-    }
+    callback(this.value);
   }
-
+  if (this.left) {
+    this.left.depthFirstLog(callback);
+  }
+  if (this.right) {
+    this.right.depthFirstLog(callback);
+  }
   
 };
 
