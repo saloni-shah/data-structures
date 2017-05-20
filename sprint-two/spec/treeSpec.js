@@ -28,6 +28,9 @@ describe('tree', function() {
     expect(tree.contains(3)).to.equal(false);
     tree.addChild(7);
     expect(tree.contains(3)).to.equal(false);
+    expect(tree.children[0].parent).to.equal(null);
+    expect(tree.children[1].parent.value).to.equal(5);
+    expect(tree.children[2].parent.value).to.equal(6);
       
   });
 
